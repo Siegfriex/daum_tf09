@@ -1,4 +1,5 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Intro from "./pages/Intro";
 import MoneyHome from "./pages/MoneyHome";
 import SearchResult from "./pages/SearchResult";
 import IssueDetail from "./pages/IssueDetail";
@@ -12,6 +13,7 @@ export default function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Navigate to="/money" replace />} />
+          <Route path="/intro" element={<Intro />} />
           <Route path="/money" element={<MoneyHome />} />
           <Route path="/search/:q" element={<SearchResult />} />
           <Route path="/issue/:id" element={<IssueDetail />} />
@@ -19,8 +21,14 @@ export default function App() {
           <Route path="/community/:id" element={<Community />} />
           <Route path="*" element={<Navigate to="/money" replace />} />
         </Routes>
-        <BottomNav />
+        <ChromeNav />
       </div>
     </HashRouter>
   );
+}
+
+// 소개 PDF(/intro) 에서는 하단 탭을 숨긴다
+function ChromeNav() {
+  const { pathname } = useLocation();
+  return pathname === "/intro" ? null : <BottomNav />;
 }

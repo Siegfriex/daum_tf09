@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AppBar, TabBar, SectionHead, Chips, Icon, dirClass, DemoFlag } from "../components/ui";
 import { MarketIssueCard, CompactIssueRows } from "../components/IssueCard";
 import { INDICES, RANKING, ISSUE } from "../data/issues";
@@ -9,6 +10,7 @@ export default function MoneyHome() {
         title="콘텐츠"
         action={
           <>
+            <Link to="/intro" className="intro-open">소개 PDF</Link>
             <span className="icon"><Icon name="swap" /></span>
             <span className="icon" style={{ marginLeft: 16 }}><Icon name="search" /></span>
           </>

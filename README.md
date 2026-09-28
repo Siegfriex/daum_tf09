@@ -20,6 +20,9 @@
 | `#/issue/samsung-mistral` | **시장 이슈 상세** | 제품 본체. 아래 6단 순서 고정 |
 | `#/news/samsung` | 뉴스 · 설명축 변화 | 기사 수 추이 + 설명축별 이전→현재→Δ, 선택 시 대표 기사 필터 |
 | `#/community/samsung-mistral` | 주요 해석 | 성장 기대 / 영향 제한 / 비용 우려 / 다른 해석 |
+| `#/intro` | 소개 PDF | 머니 홈 상단 **소개 PDF** 버튼으로 여는 전체 화면 슬라이드(1920×1080 → 3840px 렌더). **머니 홈으로** 버튼으로 복귀 |
+
+> 엔트리(`/daum_tf09/` → `#/money`)는 그대로다. 소개 PDF 는 머니 홈에서 버튼으로만 연다.
 
 ### 시장 이슈 상세 — 정보 순서 (고정)
 
@@ -58,10 +61,16 @@
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+npm run dev        # http://localhost:5173/daum_tf09/  (base 경로 포함)
 npm run typecheck
 npm run build      # dist/
 npm run preview
+```
+
+### 소개 PDF 교체
+
+```bash
+bash scripts/pdf_to_intro.sh <슬라이드.pdf>   # 1쪽 → public/intro/intro.jpg (3840px) + intro.pdf 복사 · pdftoppm 필요
 ```
 
 ## 배포
